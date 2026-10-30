@@ -619,9 +619,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: b792ae57-0e6d-4893-a550-a58de1f61bb4
+  projectName: CaveStoryReduxo
+  organizationId: buneassassin
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
