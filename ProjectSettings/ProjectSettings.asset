@@ -623,5 +623,6 @@ PlayerSettings:
   projectName: CaveStoryReduxo
   organizationId: buneassassin
   cloudEnabled: 0
-  enableNativePlatformBackendsForNewInputSystem: 0
+  activeInputHandler: 2
+  enableNativePlatformBackendsForNewInputSystem: 1
   disableOldInputManagerSupport: 0
