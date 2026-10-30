@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/EscenaBase.unity
+    guid: a4270966168aac74ca3ff975dffdf00e
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/PrimeraCueva.unity
+    guid: a9d3c7e21b5f4c84a0e6d8f1c3b7a245
+  - enabled: 1
+    path: Assets/Scenes/SegundaCueva.unity
+    guid: c4e8b2a17d6f4e0a9b3c5d7e1f2a4b60
   m_configObjects: {}
