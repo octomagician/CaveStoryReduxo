@@ -1,26 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BatBehaviour : Enemy {
 
     SpriteRenderer spriteRenderer;
     Player player;
+    Rigidbody2D rigidBody;
 
     float topY;
     float bottomY;
-    float x;
+    float verticalSpeed;
+    bool goingUp;
+
+    private int life = 2;
+    private float range = 1.5f;
+    private float minSpeed = 1f;
+    private float maxSpeed = 2.5f;
+
+    protected override void Awake()
+    {
+        maxHealth = life;
+        base.Awake();
+    }
 
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rigidBody = GetComponent<Rigidbody2D>();
         player = Player.instance;
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        topY = transform.position.y + range;
+        bottomY = transform.position.y - range;
 
-        x = transform.position.x;
-        topY = transform.position.y + 1.5f;
-        bottomY = transform.position.y - 1.5f;
-
+        verticalSpeed = Random.Range(minSpeed, maxSpeed);
+        goingUp = Random.value < 0.5f;
     }
 
     private void Update()
@@ -31,13 +43,17 @@ public class BatBehaviour : Enemy {
 
     void Movement()
     {
-        float t = Mathf.Sin(1.5f * Time.time)/2.0f + .5f;
-        transform.position = new Vector3(x, Mathf.Lerp(bottomY, topY, t), 0f);
+        if (goingUp && transform.position.y >= topY)
+            goingUp = false;
+        else if (!goingUp && transform.position.y <= bottomY)
+            goingUp = true;
+
+        float vertical = goingUp ? verticalSpeed : -verticalSpeed;
+        rigidBody.linearVelocity = new Vector2(0f, vertical);
     }
 
     void LookAtPlayer()
     {
-        spriteRenderer.flipX = (player.transform.position.x > x);
+        spriteRenderer.flipX = player.transform.position.x > transform.position.x;
     }
-
 }
