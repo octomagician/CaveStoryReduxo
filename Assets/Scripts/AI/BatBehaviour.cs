@@ -11,10 +11,10 @@ public class BatBehaviour : Enemy {
     float verticalSpeed;
     bool goingUp;
 
-    public int life = 2;
-    public float range = 1.5f;
-    public float minSpeed = 1f;
-    public float maxSpeed = 2.5f;
+    private int life = 2;
+    private float range = 1.5f;
+    private float minSpeed = 1f;
+    private float maxSpeed = 2.5f;
 
     protected override void Awake()
     {

@@ -2,7 +2,7 @@
 
 public class Enemy : Entity, IHittable
 {
-    public int experience = 1;
+    private int experience = 1;
     public GameObject experienceDropPrefab;
 
     // función para cuando una bala toca el collider

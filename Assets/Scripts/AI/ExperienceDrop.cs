@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ExperienceDrop : MonoBehaviour {
 
-    public int value;
-    public float lifetime = 30f;
+    private int value;
+    private float lifetime = 30f;
 
     public void SetValue(int amount)
     {

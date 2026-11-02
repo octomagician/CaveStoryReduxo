@@ -27,8 +27,10 @@ System.Object
         │   └── Enemy : IHittable           Assets/Scripts/AI/Enemy.cs
         │       │   recibe balas: OnHit resta projectile.damage
         │       │   Die suelta experiencia y apaga el objeto con SetActive(false). No lo destruye.
-        │       └── BatBehaviour            Assets/Scripts/AI/BatBehaviour.cs
-        │               movimiento propio del murciélago (sube y baja) y mira al jugador.
+        │       ├── BatBehaviour            Assets/Scripts/AI/BatBehaviour.cs
+        │       │       movimiento propio del murciélago (sube y baja) y mira al jugador.
+        │       └── CritterBehaviour        Assets/Scripts/AI/CritterBehaviour.cs
+        │               quieto hasta ver al jugador cerca; entonces salta en el sitio.
         │
         ├── Projectile                      Assets/Scripts/Guns/Projectile.cs
         │   │   damage, speed, range. Al chocar llama OnHit en cada IHittable del collider.
