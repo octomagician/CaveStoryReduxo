@@ -26,7 +26,7 @@ System.Object
         │   │       también usa esa salud. Exige Controller2D en el mismo objeto.
         │   └── Enemy : IHittable           Assets/Scripts/AI/Enemy.cs
         │       │   recibe balas: OnHit resta projectile.damage
-        │       │   Die apaga el objeto con SetActive(false). No lo destruye.
+        │       │   Die suelta experiencia y apaga el objeto con SetActive(false). No lo destruye.
         │       └── BatBehaviour            Assets/Scripts/AI/BatBehaviour.cs
         │               movimiento propio del murciélago (sube y baja) y mira al jugador.
         │
@@ -54,8 +54,10 @@ System.Object
         │       al activarse reproduce el ParticleSystem y se apaga al terminar.
         ├── CameraBehaviour                 Assets/Scripts/Camera/CameraBehaviour.cs
         │       sigue un Transform con SmoothDamp.
-        └── CameraTargetBehaviour           Assets/Scripts/Camera/CameraTargetBehaviour.cs
-                se desplaza delante del jugador según hacia dónde mira.
+        ├── CameraTargetBehaviour           Assets/Scripts/Camera/CameraTargetBehaviour.cs
+        │       se desplaza delante del jugador según hacia dónde mira.
+        └── ExperienceDrop                  Assets/Scripts/AI/ExperienceDrop.cs
+                el cristal que suelta un enemigo. Guarda value. No lo recoge nadie todavía.
 ```
 
 `General` y `Direction` no declaran padre: en C# quedan bajo `System.Object`. `IHittable` no hereda de nada.
@@ -85,12 +87,12 @@ El murciélago lleva los tres: `BatBehaviour`, `ContactHazard` (`damageOnHit: 1`
 
 ## Hechos que evitan releer las escenas
 
-- No existe prefab de murciélago. `Assets/Prefabs/Enemies/Bat/` solo tiene `Idle.anim` y `BatAnimatorController.controller` (un estado, Idle).
-- Murciélagos colocados en escena: uno en `SampleScene`, tres en `PrimeraCueva` (`Bat`, `Bat (1)`, `Bat (2)`). Capa Enemies (11). Componentes: SpriteRenderer, Animator, CircleCollider2D, BatBehaviour (`maxHealth: 5`), ContactHazard, Surface.
+- El prefab del murciélago es `Assets/Prefabs/Enemies/Bat/Bat.prefab`. En la misma carpeta están `Idle.anim` y `BatAnimatorController.controller` (un estado, Idle).
+- Instancias: una en `SampleScene` (en -3, 3) y tres en `PrimeraCueva` (`Bat`, `Bat (1)`, `Bat (2)`). Cada una solo cambia la posición. El prefab trae la capa Enemies (11), SpriteRenderer, Animator, CircleCollider2D, Rigidbody2D (sin gravedad, rotación congelada), BatBehaviour (`life: 5`), ContactHazard (`damageOnHit: 1`) y Surface (`particle_blood`).
 - `Site_Bat_01`, `Site_Bat_02` y `Site_Bat_03` en `PrimeraCueva` son transforms vacíos. No tienen script.
-- `Enemy` no está colgado solo. En la escena el componente es `BatBehaviour`, y Unity serializa ahí `maxHealth` porque lo hereda.
+- `Enemy` no está colgado solo. En la escena el componente es `BatBehaviour`. En `Awake` copia su `life` a `maxHealth` y luego `Entity` llena la vida actual. Un jefe que herede de `Enemy` hace lo mismo con otro número.
 - La salud vive en `Entity`. `Player` también hereda de ahí. Mover la salud a `Enemy` deja al jugador sin ella.
-- `Die` de `Enemy` llama a `base.Die()` y hace `SetActive(false)`. La vida se asigna en `Awake`, que no vuelve a correr si el objeto se reenciende.
+- `Die` de `Enemy` llama a `base.Die()`, suelta `ExperienceDrop` con `experience` (el murciélago trae 1) y hace `SetActive(false)`. La vida se asigna en `Awake`, que no vuelve a correr si el objeto se reenciende.
 - Ese apagado no se guarda en el `.unity`. `SceneManager.LoadScene` en modo Single descarga la copia y crea otra desde el archivo, activa y con la vida llena. En modo Additive, si la escena sigue cargada, el murciélago apagado sigue muerto.
-- El pool (`ObjectPoolManager`) recicla proyectiles y partículas. Los enemigos no están en él.
+- El pool (`ObjectPoolManager`) recicla proyectiles y partículas. Los enemigos no entran en él. El cristal `ExperienceDrop` se instancia al morir y `Destroy` lo borra a los 30 segundos. Guarda `value` y nadie lo recoge todavía.
 - Capas en `ProjectSettings/TagManager.asset`: 9 Player, 10 Obstacles, 11 Enemies, 12 PlayerProjectiles, 13 Hazards. La Polar Star pega en Obstacles y Enemies (`hittableMask` bits 3072).
