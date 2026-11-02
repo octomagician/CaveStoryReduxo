@@ -1,0 +1,25 @@
+---
+description: Árbol de herencia de los scripts. No lo rederives leyendo todos los .cs; el detalle está en Docs/herencia.md.
+alwaysApply: true
+---
+
+# Herencia
+
+Antes de reconstruir padres, interfaces o quién hace daño, lee `Docs/herencia.md` y actualízalo si cambia una clase.
+
+```
+Entity : MonoBehaviour          salud
+├── Player
+└── Enemy : IHittable           recibe balas; Die hace SetActive(false)
+    └── BatBehaviour           movimiento del murciélago
+
+Projectile : MonoBehaviour
+└── Missile
+
+Surface : MonoBehaviour, IHittable
+Gun : ScriptableObject
+```
+
+El resto de los scripts cuelgan directo de `MonoBehaviour` y no tienen hijos: `ContactHazard`, `Controller2D`, `GunController`, `ObjectPoolManager`, `PoolableParticleSystem`, `CameraBehaviour`, `CameraTargetBehaviour`.
+
+`ContactHazard` no hereda de `Enemy`. También lo usa el tilemap `Hazards`. `IHittable` lo implementan `Enemy` y `Surface`.
