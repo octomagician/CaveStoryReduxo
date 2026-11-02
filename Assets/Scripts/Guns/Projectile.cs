@@ -67,6 +67,7 @@ public class Projectile : MonoBehaviour
 
     protected virtual void CheckForCollisions2D()
     {
+        // Rayo corto en la dirección del disparo, solo en las capas de hittableMask
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, speed * Time.deltaTime, hittableMask.value);
 
         if(hit.collider != null)
@@ -75,12 +76,10 @@ public class Projectile : MonoBehaviour
 
             foreach(IHittable hittable in hittables)
             {
-                hittable.OnHit(hit.point, this);
+                hittable.OnHit(hit.point, this); // Avisa a Enemy y también a Surface
             }
 
-            Die(true);
-
-
+            Die(true); // La bala se apaga al pegar
         }
 
     }

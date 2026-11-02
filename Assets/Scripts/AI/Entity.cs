@@ -1,24 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Entity : MonoBehaviour {
 
     public int maxHealth = 5;
-    private int health;
+    private int health; // Vida actual
 
     protected virtual void Awake()
     {
         health = maxHealth;
     }
 
-    public void AddHealth(int m) { ModHealth(m); }
-    public void SubtractHealth(int m) { ModHealth(-m); }
+    public void AddHealth(int m) { ModHealth(m); } // Curar
 
-    private void ModHealth(int m)
+    public void SubtractHealth(int m) { ModHealth(-m); } // Recibir daño
+
+    protected virtual void Die()
     {
-        health += m;
-        CapHealth();
+        Debug.Log(name + " died!");
     }
 
     private void CapHealth()
@@ -32,9 +30,9 @@ public class Entity : MonoBehaviour {
         }
     }
 
-    protected virtual void Die()
+    private void ModHealth(int m)
     {
-        Debug.Log(name + " died!");
+        health += m;
+        CapHealth(); // Después de cambiar la vida, la ajusta
     }
-
 }

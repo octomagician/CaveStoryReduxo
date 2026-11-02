@@ -1,26 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BatBehaviour : Enemy {
 
-    SpriteRenderer spriteRenderer;
-    Player player;
+    SpriteRenderer spriteRenderer; // para voltear el sprite
+    Player player; // para seguir con la mirada al jugador
 
-    float topY;
-    float bottomY;
-    float x;
+    float topY; // límite máximo del vuelo
+    float bottomY; // límite mínimo del vuelo
+    float x; // constante horizontal
 
     private void Start()
     {
         player = Player.instance;
-
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         x = transform.position.x;
-        topY = transform.position.y + 1.5f;
-        bottomY = transform.position.y - 1.5f;
-
+        topY = transform.position.y + 1.5f; // sube 1.5 de dónde fue colocado en Unity
+        bottomY = transform.position.y - 1.5f; // baja 1.5
     }
 
     private void Update()
@@ -31,7 +27,7 @@ public class BatBehaviour : Enemy {
 
     void Movement()
     {
-        float t = Mathf.Sin(1.5f * Time.time)/2.0f + .5f;
+        float t = Mathf.Sin(1.5f * Time.time)/2.0f + .5f; // esta fórmula permite que sea un ciclo
         transform.position = new Vector3(x, Mathf.Lerp(bottomY, topY, t), 0f);
     }
 
@@ -39,5 +35,4 @@ public class BatBehaviour : Enemy {
     {
         spriteRenderer.flipX = (player.transform.position.x > x);
     }
-
 }
