@@ -30,7 +30,7 @@ System.Object
         │       ├── BatBehaviour            Assets/Scripts/AI/BatBehaviour.cs
         │       │       movimiento propio del murciélago (sube y baja) y mira al jugador.
         │       └── CritterBehaviour        Assets/Scripts/AI/CritterBehaviour.cs
-        │               quieto hasta ver al jugador cerca; entonces salta en el sitio.
+        │               quieto hasta ver al jugador cerca; entonces salta en el sitio y reproduce jumpSound.
         │
         ├── Projectile                      Assets/Scripts/Guns/Projectile.cs
         │   │   damage, speed, range. Al chocar llama OnHit en cada IHittable del collider.
