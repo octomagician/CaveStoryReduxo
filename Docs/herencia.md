@@ -25,7 +25,7 @@ System.Object
         │   ├── Player                      Assets/Scripts/Player/Player.cs
         │   │       también usa esa salud. Exige Controller2D en el mismo objeto.
         │   └── Enemy : IHittable           Assets/Scripts/AI/Enemy.cs
-        │       │   recibe balas: OnHit resta projectile.damage
+        │       │   recibe balas: OnHit resta projectile.damage y muestra un letrero -N en el impacto
         │       │   Die reproduce deathSound con Sound.Play, suelta experiencia y apaga el objeto con SetActive(false). No lo destruye.
         │       ├── BatBehaviour            Assets/Scripts/AI/BatBehaviour.cs
         │       │       movimiento propio del murciélago (sube y baja) y mira al jugador.
@@ -58,6 +58,8 @@ System.Object
         │       sigue un Transform con SmoothDamp.
         ├── CameraTargetBehaviour           Assets/Scripts/Camera/CameraTargetBehaviour.cs
         │       se desplaza delante del jugador según hacia dónde mira.
+        ├── DamagePopup                     Assets/Scripts/AI/DamagePopup.cs
+        │       letrero rojo en píxeles. Show(posición, cantidad) arma "-N", salta y se borra. No es hijo del enemigo.
         ├── ExperienceDrop                  Assets/Scripts/AI/ExperienceDrop.cs
         │       el cristal que suelta un enemigo. Guarda value. No lo recoge nadie todavía.
         └── Sound                           Assets/Scripts/Misc/Sound.cs
@@ -70,7 +72,7 @@ System.Object
 
 | Clase | Qué hace OnHit |
 |---|---|
-| `Enemy` | Resta `projectile.damage` a la salud heredada de `Entity`. |
+| `Enemy` | Resta `projectile.damage` a la salud heredada de `Entity` y muestra `-{daño}` con `DamagePopup`. |
 | `Surface` | Spawnea las partículas indicadas en `surfaceHitParticlesTag`. |
 
 Un mismo objeto puede llevar las dos. El murciélago las lleva: la bala baja la vida y suelta sangre en el mismo impacto. `Projectile.CheckForCollisions2D` recorre todos los `IHittable` del collider.
