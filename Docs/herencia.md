@@ -26,7 +26,7 @@ System.Object
         │   │       también usa esa salud. Exige Controller2D en el mismo objeto.
         │   └── Enemy : IHittable           Assets/Scripts/AI/Enemy.cs
         │       │   recibe balas: OnHit resta projectile.damage
-        │       │   Die suelta experiencia y apaga el objeto con SetActive(false). No lo destruye.
+        │       │   Die reproduce deathSound con Sound.Play, suelta experiencia y apaga el objeto con SetActive(false). No lo destruye.
         │       ├── BatBehaviour            Assets/Scripts/AI/BatBehaviour.cs
         │       │       movimiento propio del murciélago (sube y baja) y mira al jugador.
         │       └── CritterBehaviour        Assets/Scripts/AI/CritterBehaviour.cs
@@ -58,8 +58,10 @@ System.Object
         │       sigue un Transform con SmoothDamp.
         ├── CameraTargetBehaviour           Assets/Scripts/Camera/CameraTargetBehaviour.cs
         │       se desplaza delante del jugador según hacia dónde mira.
-        └── ExperienceDrop                  Assets/Scripts/AI/ExperienceDrop.cs
-                el cristal que suelta un enemigo. Guarda value. No lo recoge nadie todavía.
+        ├── ExperienceDrop                  Assets/Scripts/AI/ExperienceDrop.cs
+        │       el cristal que suelta un enemigo. Guarda value. No lo recoge nadie todavía.
+        └── Sound                           Assets/Scripts/Misc/Sound.cs
+                reproductor único. Play(AudioClip) hace PlayOneShot en el AudioSource del mismo objeto. El clip no vive aquí.
 ```
 
 `General` y `Direction` no declaran padre: en C# quedan bajo `System.Object`. `IHittable` no hereda de nada.
@@ -94,7 +96,8 @@ El murciélago lleva los tres: `BatBehaviour`, `ContactHazard` (`damageOnHit: 1`
 - `Site_Bat_01`, `Site_Bat_02` y `Site_Bat_03` en `PrimeraCueva` son transforms vacíos. No tienen script.
 - `Enemy` no está colgado solo. En la escena el componente es `BatBehaviour`. En `Awake` copia su `life` a `maxHealth` y luego `Entity` llena la vida actual. Un jefe que herede de `Enemy` hace lo mismo con otro número.
 - La salud vive en `Entity`. `Player` también hereda de ahí. Mover la salud a `Enemy` deja al jugador sin ella.
-- `Die` de `Enemy` llama a `base.Die()`, suelta `ExperienceDrop` con `experience` (el murciélago trae 1) y hace `SetActive(false)`. La vida se asigna en `Awake`, que no vuelve a correr si el objeto se reenciende.
+- `Die` de `Enemy` llama a `Sound.instance.Play(deathSound)`, luego a `base.Die()`, suelta `ExperienceDrop` con `experience` (el murciélago trae 1) y hace `SetActive(false)`. El murciélago y el critter tienen `ID39_snd_enemy_damage.wav` en `deathSound`. La vida se asigna en `Awake`, que no vuelve a correr si el objeto se reenciende.
+- El objeto `Audio` está solo en `PrimeraCueva`. Lleva `Sound` y un `AudioSource` sin clip y sin loop. `Awake` de `Sound` llena `instance`. Sin ese objeto en la escena que corre, `Sound.instance` es null y `Die` lanza `NullReferenceException` antes de apagar al enemigo.
 - Ese apagado no se guarda en el `.unity`. `SceneManager.LoadScene` en modo Single descarga la copia y crea otra desde el archivo, activa y con la vida llena. En modo Additive, si la escena sigue cargada, el murciélago apagado sigue muerto.
 - El pool (`ObjectPoolManager`) recicla proyectiles y partículas. Los enemigos no entran en él. El cristal `ExperienceDrop` se instancia al morir y `Destroy` lo borra a los 30 segundos. Guarda `value` y nadie lo recoge todavía.
 - Capas en `ProjectSettings/TagManager.asset`: 9 Player, 10 Obstacles, 11 Enemies, 12 PlayerProjectiles, 13 Hazards. La Polar Star pega en Obstacles y Enemies (`hittableMask` bits 3072).

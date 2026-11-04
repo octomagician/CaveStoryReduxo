@@ -4,6 +4,7 @@ public class Enemy : Entity, IHittable
 {
     private int experience = 1;
     public GameObject experienceDropPrefab;
+    public AudioClip deathSound;
 
     // función para cuando una bala toca el collider
     public void OnHit(Vector3 position, Projectile projectile)
@@ -13,6 +14,7 @@ public class Enemy : Entity, IHittable
 
     protected override void Die()
     {
+        Sound.instance.Play(deathSound);
         base.Die();
         DropExperience();
         gameObject.SetActive(false); // desactiva al enemigo
