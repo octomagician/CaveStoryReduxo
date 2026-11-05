@@ -61,7 +61,7 @@ System.Object
         ├── DamagePopup                     Assets/Scripts/AI/DamagePopup.cs
         │       letrero rojo en píxeles. Show(posición, cantidad) arma "-N", salta y se borra. No es hijo del enemigo.
         ├── ExperienceDrop                  Assets/Scripts/AI/ExperienceDrop.cs
-        │       el cristal que suelta un enemigo. Guarda value. No lo recoge nadie todavía.
+        │       triángulo naranja que suelta un enemigo. Al aparecer sale empujado, una animación gira su sprite, cae y rebota en el suelo. Guarda value. No lo recoge nadie todavía.
         └── Sound                           Assets/Scripts/Misc/Sound.cs
                 reproductor único. Play(AudioClip) hace PlayOneShot en el AudioSource del mismo objeto. El clip no vive aquí.
 ```
@@ -101,5 +101,5 @@ El murciélago lleva los tres: `BatBehaviour`, `ContactHazard` (`damageOnHit: 1`
 - `Die` de `Enemy` llama a `Sound.instance.Play(deathSound)`, luego a `base.Die()`, suelta `ExperienceDrop` con `experience` (el murciélago trae 1) y hace `SetActive(false)`. El murciélago y el critter tienen `ID39_snd_enemy_damage.wav` en `deathSound`. La vida se asigna en `Awake`, que no vuelve a correr si el objeto se reenciende.
 - El objeto `Audio` está solo en `PrimeraCueva`. Lleva `Sound` y un `AudioSource` sin clip y sin loop. `Awake` de `Sound` llena `instance`. Sin ese objeto en la escena que corre, `Sound.instance` es null y `Die` lanza `NullReferenceException` antes de apagar al enemigo.
 - Ese apagado no se guarda en el `.unity`. `SceneManager.LoadScene` en modo Single descarga la copia y crea otra desde el archivo, activa y con la vida llena. En modo Additive, si la escena sigue cargada, el murciélago apagado sigue muerto.
-- El pool (`ObjectPoolManager`) recicla proyectiles y partículas. Los enemigos no entran en él. El cristal `ExperienceDrop` se instancia al morir y `Destroy` lo borra a los 30 segundos. Guarda `value` y nadie lo recoge todavía.
+- El pool (`ObjectPoolManager`) recicla proyectiles y partículas. Los enemigos no entran en él. El cristal `ExperienceDrop` se instancia al morir: sale empujado, cae y rebota. El giro es la animación `ExperienceDropSpin`, que rota el transform del hijo `Sprite`. El dibujo es un solo sprite, `Assets/Textures/Sprites/Weapons/ExperienceDrop.png`. `Destroy` lo borra a los 30 segundos. Guarda `value` y nadie lo recoge todavía. El collider sólido ignora Player y Enemies; el trigger sigue pudiendo tocar al jugador.
 - Capas en `ProjectSettings/TagManager.asset`: 9 Player, 10 Obstacles, 11 Enemies, 12 PlayerProjectiles, 13 Hazards. La Polar Star pega en Obstacles y Enemies (`hittableMask` bits 3072).
