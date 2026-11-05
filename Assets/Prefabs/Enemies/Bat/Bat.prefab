@@ -171,6 +171,7 @@ MonoBehaviour:
   maxHealth: 5
   experienceDropPrefab: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
   deathSound: {fileID: 8300000, guid: 4318a7cdfd7ea424ab8207f9f5092f41, type: 3}
+  hitCaretTag: particle_enemyhit
 --- !u!114 &400007
 MonoBehaviour:
   m_ObjectHideFlags: 0

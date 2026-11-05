@@ -338,6 +338,9 @@ MonoBehaviour:
   - tag: particle_explosion
     prefab: {fileID: 1167451941929310, guid: 68a292adeaa2b5848af1b44b69a053b8, type: 3}
     size: 4
+  - tag: particle_enemyhit
+    prefab: {fileID: 820001, guid: 5f1c8e3a6b0d42e7a9c4d1f8b2e60573, type: 3}
+    size: 8
   - tag: projectile_polarstar_1
     prefab: {fileID: 1146267451723798, guid: aa4828a487ed7ba40bce4dca4f5c894b, type: 3}
     size: 1
