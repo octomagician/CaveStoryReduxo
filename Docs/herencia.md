@@ -25,12 +25,13 @@ System.Object
         │   ├── Player                      Assets/Scripts/Player/Player.cs
         │   │       también usa esa salud. Exige Controller2D en el mismo objeto.
         │   └── Enemy : IHittable           Assets/Scripts/AI/Enemy.cs
-        │       │   recibe balas: OnHit resta projectile.damage
-        │       │   Die suelta experiencia y apaga el objeto con SetActive(false). No lo destruye.
+        │       │   recibe balas: OnHit resta projectile.damage, muestra un letrero -N en el impacto
+        │       │   y suelta tres círculos en el centro del sprite
+        │       │   Die reproduce deathSound con Sound.Play, suelta experiencia y apaga el objeto con SetActive(false). No lo destruye.
         │       ├── BatBehaviour            Assets/Scripts/AI/BatBehaviour.cs
         │       │       movimiento propio del murciélago (sube y baja) y mira al jugador.
         │       └── CritterBehaviour        Assets/Scripts/AI/CritterBehaviour.cs
-        │               quieto hasta ver al jugador cerca; entonces salta en el sitio.
+        │               quieto hasta ver al jugador cerca; entonces salta en el sitio y reproduce jumpSound.
         │
         ├── Projectile                      Assets/Scripts/Guns/Projectile.cs
         │   │   damage, speed, range. Al chocar llama OnHit en cada IHittable del collider.
@@ -54,12 +55,19 @@ System.Object
         │           recicla balas y partículas con SetActive. Los enemigos no entran en el pool.
         ├── PoolableParticleSystem          Assets/Scripts/Misc/PoolableParticleSystem.cs
         │       al activarse reproduce el ParticleSystem y se apaga al terminar.
+        ├── PoolableAnimator                Assets/Scripts/Misc/PoolableAnimator.cs
+        │       al activarse reinicia el Animator y apaga el objeto cuando el clip termina.
+        │       No cambia sprites ni los mueve: eso vive en el clip.
         ├── CameraBehaviour                 Assets/Scripts/Camera/CameraBehaviour.cs
         │       sigue un Transform con SmoothDamp.
         ├── CameraTargetBehaviour           Assets/Scripts/Camera/CameraTargetBehaviour.cs
         │       se desplaza delante del jugador según hacia dónde mira.
-        └── ExperienceDrop                  Assets/Scripts/AI/ExperienceDrop.cs
-                el cristal que suelta un enemigo. Guarda value. No lo recoge nadie todavía.
+        ├── DamagePopup                     Assets/Scripts/AI/DamagePopup.cs
+        │       letrero rojo en píxeles. Show(posición, cantidad) arma "-N", salta y se borra. No es hijo del enemigo.
+        ├── ExperienceDrop                  Assets/Scripts/AI/ExperienceDrop.cs
+        │       triángulo naranja que suelta un enemigo. Al aparecer sale empujado, una animación gira su sprite, cae y rebota en el suelo. Guarda value. No lo recoge nadie todavía.
+        └── Sound                           Assets/Scripts/Misc/Sound.cs
+                reproductor único. Play(AudioClip) hace PlayOneShot en el AudioSource del mismo objeto. El clip no vive aquí.
 ```
 
 `General` y `Direction` no declaran padre: en C# quedan bajo `System.Object`. `IHittable` no hereda de nada.
@@ -68,7 +76,7 @@ System.Object
 
 | Clase | Qué hace OnHit |
 |---|---|
-| `Enemy` | Resta `projectile.damage` a la salud heredada de `Entity`. |
+| `Enemy` | Resta `projectile.damage` a la salud heredada de `Entity`, muestra `-{daño}` con `DamagePopup` y suelta `particle_enemyhit` en el centro del sprite. |
 | `Surface` | Spawnea las partículas indicadas en `surfaceHitParticlesTag`. |
 
 Un mismo objeto puede llevar las dos. El murciélago las lleva: la bala baja la vida y suelta sangre en el mismo impacto. `Projectile.CheckForCollisions2D` recorre todos los `IHittable` del collider.
@@ -94,7 +102,9 @@ El murciélago lleva los tres: `BatBehaviour`, `ContactHazard` (`damageOnHit: 1`
 - `Site_Bat_01`, `Site_Bat_02` y `Site_Bat_03` en `PrimeraCueva` son transforms vacíos. No tienen script.
 - `Enemy` no está colgado solo. En la escena el componente es `BatBehaviour`. En `Awake` copia su `life` a `maxHealth` y luego `Entity` llena la vida actual. Un jefe que herede de `Enemy` hace lo mismo con otro número.
 - La salud vive en `Entity`. `Player` también hereda de ahí. Mover la salud a `Enemy` deja al jugador sin ella.
-- `Die` de `Enemy` llama a `base.Die()`, suelta `ExperienceDrop` con `experience` (el murciélago trae 1) y hace `SetActive(false)`. La vida se asigna en `Awake`, que no vuelve a correr si el objeto se reenciende.
+- `Die` de `Enemy` llama a `Sound.instance.Play(deathSound)`, luego a `base.Die()`, suelta `ExperienceDrop` con `experience` (el murciélago trae 1) y hace `SetActive(false)`. El murciélago y el critter tienen `ID39_snd_enemy_damage.wav` en `deathSound`. La vida se asigna en `Awake`, que no vuelve a correr si el objeto se reenciende.
+- El objeto `Audio` está solo en `PrimeraCueva`. Lleva `Sound` y un `AudioSource` sin clip y sin loop. `Awake` de `Sound` llena `instance`. Sin ese objeto en la escena que corre, `Sound.instance` es null y `Die` lanza `NullReferenceException` antes de apagar al enemigo.
 - Ese apagado no se guarda en el `.unity`. `SceneManager.LoadScene` en modo Single descarga la copia y crea otra desde el archivo, activa y con la vida llena. En modo Additive, si la escena sigue cargada, el murciélago apagado sigue muerto.
-- El pool (`ObjectPoolManager`) recicla proyectiles y partículas. Los enemigos no entran en él. El cristal `ExperienceDrop` se instancia al morir y `Destroy` lo borra a los 30 segundos. Guarda `value` y nadie lo recoge todavía.
+- El pool (`ObjectPoolManager`) recicla proyectiles y partículas. Los enemigos no entran en él. El cristal `ExperienceDrop` se instancia al morir: sale empujado, cae y rebota. El giro es la animación `ExperienceDropSpin`, que rota el transform del hijo `Sprite`. El dibujo es un solo sprite, `Assets/Textures/Sprites/Weapons/ExperienceDrop.png`. `Destroy` lo borra a los 30 segundos. Guarda `value` y nadie lo recoge todavía. El collider sólido ignora Player y Enemies; el trigger sigue pudiendo tocar al jugador.
+- El golpe de una bala en un enemigo, aparte de la sangre de `Surface`, nace en el centro del `SpriteRenderer`. El prefab `Assets/Prefabs/Particles/EnemyHitCaret.prefab` trae tres círculos (`Circle`, `Circle (1)`, `Circle (2)`). La animación `EnemyHitCaret` pasa por `Caret_11`, `Caret_12`, `Caret_13` y `Caret_14` y los separa. Ese movimiento no está en código. `PoolableAnimator` reinicia el estado `Pop` y apaga el objeto al terminar el clip, para que el pool lo reutilice. El tag es `particle_enemyhit` (tamaño 8) en `PrimeraCueva`, `SegundaCueva` y `SampleScene`. El murciélago y el critter lo traen en `hitCaretTag`.
 - Capas en `ProjectSettings/TagManager.asset`: 9 Player, 10 Obstacles, 11 Enemies, 12 PlayerProjectiles, 13 Hazards. La Polar Star pega en Obstacles y Enemies (`hittableMask` bits 3072).

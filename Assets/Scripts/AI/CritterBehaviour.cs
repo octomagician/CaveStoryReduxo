@@ -13,6 +13,7 @@ public class CritterBehaviour : Enemy {
     private float jumpSpeed = 7f;
     private LayerMask obstacleMask;
     public Sprite jumpSprite;
+    public AudioClip jumpSound;
 
     protected override void Awake()
     {
@@ -44,6 +45,7 @@ public class CritterBehaviour : Enemy {
         if (grounded && rigidBody.linearVelocity.y <= 0.05f && SeesPlayer())
         {
             rigidBody.linearVelocity = new Vector2(0f, jumpSpeed);
+            Sound.instance.Play(jumpSound);
             inAir = true;
         }
         else

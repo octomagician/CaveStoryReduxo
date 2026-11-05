@@ -1,0 +1,28 @@
+---
+description: Cómo se añaden efectos de sonido. Un reproductor compartido y el clip en quien hace el ruido.
+alwaysApply: true
+---
+
+# Sonidos
+
+Los efectos pasan por `Sound` (`Assets/Scripts/Misc/Sound.cs`). No crees otro reproductor, ni una lista de clips con índices, ni un `AudioSource` por sonido.
+
+`Sound` cuelga directo de `MonoBehaviour` y no tiene hijos. Vive en el objeto `Audio` de la escena, junto a un `AudioSource` sin loop y sin clip. `Awake` guarda `instance` y toma esa fuente. Hoy ese objeto está solo en `PrimeraCueva`. La escena que se juega tiene que llevarlo; si `instance` es null, la llamada lanza `NullReferenceException` y el método que la hizo se corta ahí.
+
+El clip es un campo `AudioClip` del componente que provoca el ruido. Se arrastra en el Inspector del prefab o del asset. El código no escribe el nombre del archivo. `Assets/Sounds/` se organiza como se quiera.
+
+```csharp
+public AudioClip deathSound;
+
+protected override void Die()
+{
+    Sound.instance.Play(deathSound);
+    base.Die();
+}
+```
+
+`Play` no hace nada si el clip es null. El mismo método vale para todos; cada prefab trae el suyo. Referencia real: `Enemy.deathSound`, al inicio de `Die`, antes de soltar experiencia y de `SetActive(false)`. El murciélago y el critter ya tienen clip en ese campo.
+
+El `AudioSource` no va en objetos del pool (`Projectile`, `Missile`, partículas). `SetActive(false)` corta el sonido. Esos clips también se reproducen con `Sound.instance.Play` antes de apagar el objeto.
+
+La música en loop, si se agrega, usa otro `AudioSource` en el mismo objeto `Audio`, con su propio play y stop.
