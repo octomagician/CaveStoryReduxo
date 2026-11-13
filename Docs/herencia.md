@@ -28,12 +28,20 @@ System.Object
         │       │   recibe balas: OnHit resta projectile.damage, muestra un letrero -N en el impacto
         │       │   y suelta tres círculos en el centro del sprite
         │       │   Die reproduce deathSound con Sound.Play, suelta experiencia y apaga el objeto con SetActive(false). No lo destruye.
+        │       │   sightDistance y SeesPlayer: el jugador está cerca si entra en esa distancia y un muro (capa Obstacles) no lo tapa.
+        │       │   El rayo sale del centro del sprite. Cualquier hijo puede cambiar de actitud con eso.
         │       ├── BatBehaviour            Assets/Scripts/AI/BatBehaviour.cs
         │       │       movimiento propio del murciélago (sube y baja) y mira al jugador.
         │       ├── CritterBehaviour        Assets/Scripts/AI/CritterBehaviour.cs
-        │       │       quieto hasta ver al jugador cerca; entonces salta en el sitio y reproduce jumpSound.
-        │       └── BastlBehaviour          Assets/Scripts/AI/BastlBehaviour.cs
-        │               camina de frente. Al rayo de un muro (capa Obstacles) da la vuelta. El jugador no lo frena.
+        │       │   │   quieto hasta ver al jugador cerca; entonces salta en el sitio y reproduce jumpSound.
+        │       │   └── EggCritterBehaviour Assets/Scripts/AI/EggCritterBehaviour.cs
+        │       │           misma lógica, con más vida, más vista y un salto más alto.
+        │       └── WalkerBehaviour         Assets/Scripts/AI/WalkerBehaviour.cs
+        │           │   camina a moveSpeed. Al rayo de un muro (capa Obstacles) da la vuelta. El jugador no lo frena.
+        │           ├── BastlBehaviour      Assets/Scripts/AI/BastlBehaviour.cs
+        │           │       usa esa caminata. Vida 2, velocidad 8.
+        │           └── BehemothBehaviour   Assets/Scripts/AI/BehemothBehaviour.cs
+        │                   camina a 3. Si ve al jugador, pasa a los sprites 4, 5 y 6 y corre a angrySpeed (6).
         │
         ├── Projectile                      Assets/Scripts/Guns/Projectile.cs
         │   │   damage, speed, range. Al chocar llama OnHit en cada IHittable del collider.
@@ -96,7 +104,8 @@ El murciélago lleva los tres: `BatBehaviour`, `ContactHazard` (`damageOnHit: 1`
 ## Hechos que evitan releer las escenas
 
 - El prefab del murciélago es `Assets/Prefabs/Enemies/Bat/Bat.prefab`. En la misma carpeta están `Idle.anim` y `BatAnimatorController.controller` (un estado, Idle).
-- El prefab de Bastl es `Assets/Prefabs/Enemies/Bastl/Bastl.prefab`, con `Walk.anim` y `BastlAnimatorController.controller`. El dibujo es `Assets/Textures/Sprites/NPC/Bastl.png` (tres cuadros, 32×16, pivote abajo). Hay una instancia en `PrimeraCueva`, en (12.5, -9.55), el mismo suelo que el critter. El collider sólido excluye la capa Player; un trigger del mismo tamaño sigue lastimando por `ContactHazard`. El rigidbody ignora a otros enemigos, tiene gravedad y la rotación congelada.
+- El prefab de Bastl es `Assets/Prefabs/Enemies/Bastl/Bastl.prefab`, con `Walk.anim` y `BastlAnimatorController.controller`. El dibujo es `Assets/Textures/Sprites/NPC/Bastl.png` (tres cuadros, 32×16, pivote abajo). El collider sólido excluye la capa Player; un trigger del mismo tamaño sigue lastimando por `ContactHazard`. El rigidbody ignora a otros enemigos, tiene gravedad y la rotación congelada. La caminata vive en `WalkerBehaviour`; Bastl solo fija la vida.
+- El prefab de Behemoth es `Assets/Prefabs/Enemies/Behemoth/Behemoth.prefab`, con `Walk.anim`, `Angry.anim` y `BehemothAnimatorController.controller` (bool `Angry`). El dibujo es `Assets/Textures/Sprites/NPC/Behemoth.png` (seis cuadros, 32×24, pivote abajo). Los tres primeros caminan en gris. Los tres últimos (sprites 4, 5 y 6) son el enfado: el cuarto aún tiene el cuerpo gris y los ojos torcidos, y los dos últimos van en rojo. Hay una instancia en `PrimeraCueva`, en (12.5, -9.5), el mismo suelo que el critter. Misma idea de colliders y rigidbody que Bastl. Vida 6. Camina a 3 y, si `SeesPlayer` es cierto, a `angrySpeed` (6). Si el jugador se va o un muro lo tapa, vuelve al paso gris.
 - Instancias: una en `SampleScene` (en -3, 3) y tres en `PrimeraCueva` (`Bat`, `Bat (1)`, `Bat (2)`). Cada una solo cambia la posición. El prefab trae la capa Enemies (11), SpriteRenderer, Animator, CircleCollider2D, Rigidbody2D (sin gravedad, rotación congelada), BatBehaviour (`life: 5`), ContactHazard (`damageOnHit: 1`) y Surface (`particle_blood`).
 - `Site_Bat_01`, `Site_Bat_02` y `Site_Bat_03` en `PrimeraCueva` son transforms vacíos. No tienen script.
 - `Enemy` no está colgado solo. En la escena el componente es `BatBehaviour`. En `Awake` copia su `life` a `maxHealth` y luego `Entity` llena la vida actual. Un jefe que herede de `Enemy` hace lo mismo con otro número.

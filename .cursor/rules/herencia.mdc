@@ -10,10 +10,13 @@ Antes de reconstruir padres, interfaces o quién hace daño, lee `Docs/herencia.
 ```
 Entity : MonoBehaviour          salud
 ├── Player
-└── Enemy : IHittable           recibe balas y suelta tres círculos en el sprite; Die reproduce deathSound, suelta experiencia y hace SetActive(false)
+└── Enemy : IHittable           recibe balas y suelta tres círculos en el sprite; Die reproduce deathSound, suelta experiencia y hace SetActive(false). SeesPlayer y sightDistance viven aquí
     ├── BatBehaviour           movimiento del murciélago
     ├── CritterBehaviour       salta en el sitio al ver al jugador y reproduce jumpSound
-    └── BastlBehaviour         camina de frente y da la vuelta al topar con un muro
+    │   └── EggCritterBehaviour
+    └── WalkerBehaviour        velocidad y vuelta al topar con un muro
+        ├── BastlBehaviour
+        └── BehemothBehaviour  a 3; si ve al jugador, sprites 4-6 y más velocidad
 
 Projectile : MonoBehaviour
 └── Missile
