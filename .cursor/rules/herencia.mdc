@@ -12,7 +12,8 @@ Entity : MonoBehaviour          salud
 ├── Player
 └── Enemy : IHittable           recibe balas y suelta tres círculos en el sprite; Die reproduce deathSound, suelta experiencia y hace SetActive(false)
     ├── BatBehaviour           movimiento del murciélago
-    └── CritterBehaviour       salta en el sitio al ver al jugador y reproduce jumpSound
+    ├── CritterBehaviour       salta en el sitio al ver al jugador y reproduce jumpSound
+    └── BastlBehaviour         camina de frente y da la vuelta al topar con un muro
 
 Projectile : MonoBehaviour
 └── Missile
@@ -21,6 +22,6 @@ Surface : MonoBehaviour, IHittable
 Gun : ScriptableObject
 ```
 
-El resto de los scripts cuelgan directo de `MonoBehaviour` y no tienen hijos: `ContactHazard`, `Controller2D`, `GunController`, `ObjectPoolManager`, `PoolableParticleSystem`, `PoolableAnimator`, `CameraBehaviour`, `CameraTargetBehaviour`, `ExperienceDrop`, `Sound`, `DamagePopup`. Cómo se añade un efecto está en la regla `sonidos`.
+El resto de los scripts cuelgan directo de `MonoBehaviour` y no tienen hijos: `ContactHazard`, `Controller2D`, `GunController`, `ObjectPoolManager`, `PoolableParticleSystem`, `PoolableAnimator`, `ExperienceDrop`, `Sound`, `DamagePopup`. Cómo se añade un efecto está en la regla `sonidos`. La cámara no tiene script: es hija del jugador.
 
 `ContactHazard` no hereda de `Enemy`. También lo usa el tilemap `Hazards`. `IHittable` lo implementan `Enemy` y `Surface`.

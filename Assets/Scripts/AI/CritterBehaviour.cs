@@ -8,9 +8,9 @@ public class CritterBehaviour : Enemy {
     Animator animator;
     Collider2D bodyCollider;
 
-    private int life = 2;
-    private float sightDistance = 5f;
-    private float jumpSpeed = 7f;
+    public int life = 2;
+    public float sightDistance = 5f;
+    public float jumpSpeed = 7f;
     private LayerMask obstacleMask;
     public Sprite jumpSprite;
     public AudioClip jumpSound;

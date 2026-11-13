@@ -30,8 +30,10 @@ System.Object
         │       │   Die reproduce deathSound con Sound.Play, suelta experiencia y apaga el objeto con SetActive(false). No lo destruye.
         │       ├── BatBehaviour            Assets/Scripts/AI/BatBehaviour.cs
         │       │       movimiento propio del murciélago (sube y baja) y mira al jugador.
-        │       └── CritterBehaviour        Assets/Scripts/AI/CritterBehaviour.cs
-        │               quieto hasta ver al jugador cerca; entonces salta en el sitio y reproduce jumpSound.
+        │       ├── CritterBehaviour        Assets/Scripts/AI/CritterBehaviour.cs
+        │       │       quieto hasta ver al jugador cerca; entonces salta en el sitio y reproduce jumpSound.
+        │       └── BastlBehaviour          Assets/Scripts/AI/BastlBehaviour.cs
+        │               camina de frente. Al rayo de un muro (capa Obstacles) da la vuelta. El jugador no lo frena.
         │
         ├── Projectile                      Assets/Scripts/Guns/Projectile.cs
         │   │   damage, speed, range. Al chocar llama OnHit en cada IHittable del collider.
@@ -42,7 +44,7 @@ System.Object
         │       al recibir un disparo suelta partículas (en el murciélago, sangre).
         │
         ├── ContactHazard                   Assets/Scripts/World/ContactHazard.cs
-        │       daño por contacto al jugador. No hereda de Enemy.
+        │       daño por contacto al jugador, en colisión o en trigger. No hereda de Enemy.
         │
         ├── Controller2D                    Assets/Scripts/Player/Controller2D.cs
         │   ├── struct RaycastOrigins       anidado, privado. Esquinas del collider para los rayos.
@@ -58,10 +60,6 @@ System.Object
         ├── PoolableAnimator                Assets/Scripts/Misc/PoolableAnimator.cs
         │       al activarse reinicia el Animator y apaga el objeto cuando el clip termina.
         │       No cambia sprites ni los mueve: eso vive en el clip.
-        ├── CameraBehaviour                 Assets/Scripts/Camera/CameraBehaviour.cs
-        │       sigue un Transform con SmoothDamp.
-        ├── CameraTargetBehaviour           Assets/Scripts/Camera/CameraTargetBehaviour.cs
-        │       se desplaza delante del jugador según hacia dónde mira.
         ├── DamagePopup                     Assets/Scripts/AI/DamagePopup.cs
         │       letrero rojo en píxeles. Show(posición, cantidad) arma "-N", salta y se borra. No es hijo del enemigo.
         ├── ExperienceDrop                  Assets/Scripts/AI/ExperienceDrop.cs
@@ -98,6 +96,7 @@ El murciélago lleva los tres: `BatBehaviour`, `ContactHazard` (`damageOnHit: 1`
 ## Hechos que evitan releer las escenas
 
 - El prefab del murciélago es `Assets/Prefabs/Enemies/Bat/Bat.prefab`. En la misma carpeta están `Idle.anim` y `BatAnimatorController.controller` (un estado, Idle).
+- El prefab de Bastl es `Assets/Prefabs/Enemies/Bastl/Bastl.prefab`, con `Walk.anim` y `BastlAnimatorController.controller`. El dibujo es `Assets/Textures/Sprites/NPC/Bastl.png` (tres cuadros, 32×16, pivote abajo). Hay una instancia en `PrimeraCueva`, en (12.5, -9.55), el mismo suelo que el critter. El collider sólido excluye la capa Player; un trigger del mismo tamaño sigue lastimando por `ContactHazard`. El rigidbody ignora a otros enemigos, tiene gravedad y la rotación congelada.
 - Instancias: una en `SampleScene` (en -3, 3) y tres en `PrimeraCueva` (`Bat`, `Bat (1)`, `Bat (2)`). Cada una solo cambia la posición. El prefab trae la capa Enemies (11), SpriteRenderer, Animator, CircleCollider2D, Rigidbody2D (sin gravedad, rotación congelada), BatBehaviour (`life: 5`), ContactHazard (`damageOnHit: 1`) y Surface (`particle_blood`).
 - `Site_Bat_01`, `Site_Bat_02` y `Site_Bat_03` en `PrimeraCueva` son transforms vacíos. No tienen script.
 - `Enemy` no está colgado solo. En la escena el componente es `BatBehaviour`. En `Awake` copia su `life` a `maxHealth` y luego `Entity` llena la vida actual. Un jefe que herede de `Enemy` hace lo mismo con otro número.
@@ -108,3 +107,4 @@ El murciélago lleva los tres: `BatBehaviour`, `ContactHazard` (`damageOnHit: 1`
 - El pool (`ObjectPoolManager`) recicla proyectiles y partículas. Los enemigos no entran en él. El cristal `ExperienceDrop` se instancia al morir: sale empujado, cae y rebota. El giro es la animación `ExperienceDropSpin`, que rota el transform del hijo `Sprite`. El dibujo es un solo sprite, `Assets/Textures/Sprites/Weapons/ExperienceDrop.png`. `Destroy` lo borra a los 30 segundos. Guarda `value` y nadie lo recoge todavía. El collider sólido ignora Player y Enemies; el trigger sigue pudiendo tocar al jugador.
 - El golpe de una bala en un enemigo, aparte de la sangre de `Surface`, nace en el centro del `SpriteRenderer`. El prefab `Assets/Prefabs/Particles/EnemyHitCaret.prefab` trae tres círculos (`Circle`, `Circle (1)`, `Circle (2)`). La animación `EnemyHitCaret` pasa por `Caret_11`, `Caret_12`, `Caret_13` y `Caret_14` y los separa. Ese movimiento no está en código. `PoolableAnimator` reinicia el estado `Pop` y apaga el objeto al terminar el clip, para que el pool lo reutilice. El tag es `particle_enemyhit` (tamaño 8) en `PrimeraCueva`, `SegundaCueva` y `SampleScene`. El murciélago y el critter lo traen en `hitCaretTag`.
 - Capas en `ProjectSettings/TagManager.asset`: 9 Player, 10 Obstacles, 11 Enemies, 12 PlayerProjectiles, 13 Hazards. La Polar Star pega en Obstacles y Enemies (`hittableMask` bits 3072).
+- La `Main Camera` es hija del jugador en `PrimeraCueva`, `SegundaCueva` y `SampleScene`. No hay script que la mueva: su posición local es (0, 0, -10) y se desplaza con él. Sigue teniendo `PixelPerfectCamera` (16 píxeles por unidad, referencia 320×240). `EscenaBase` no tiene jugador, así que ahí la cámara queda en la raíz.
