@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Camina a moveSpeed y da la vuelta al topar con un muro. Bastl y Behemoth cuelgan de aquí.
+// Camina a moveSpeed y da la vuelta al topar con un muro. Bastl, Behemoth, Beetle y Basu cuelgan de aquí.
 public class WalkerBehaviour : Enemy
 {
     public float moveSpeed = 8f;

@@ -39,9 +39,13 @@ System.Object
         │       └── WalkerBehaviour         Assets/Scripts/AI/WalkerBehaviour.cs
         │           │   camina a moveSpeed. Al rayo de un muro (capa Obstacles) da la vuelta. El jugador no lo frena.
         │           ├── BastlBehaviour      Assets/Scripts/AI/BastlBehaviour.cs
-        │           │       usa esa caminata. Vida 2, velocidad 8.
-        │           └── BehemothBehaviour   Assets/Scripts/AI/BehemothBehaviour.cs
-        │                   camina a 3. Si ve al jugador, pasa a los sprites 4, 5 y 6 y corre a angrySpeed (6).
+        │           │       usa esa caminata. Vida 2, velocidad 8. El dibujo son las nubes de NpcEggs1.
+        │           ├── BehemothBehaviour   Assets/Scripts/AI/BehemothBehaviour.cs
+        │           │       camina a 3. Si ve al jugador, pasa a los cuadros rojos y corre a angrySpeed (6).
+        │           ├── BeetleBehaviour     Assets/Scripts/AI/BeetleBehaviour.cs
+        │           │       camina a 2.5. Si ve al jugador, el Animator pasa de Walk a Alert.
+        │           └── BasuBehaviour       Assets/Scripts/AI/BasuBehaviour.cs
+        │                   vuela a 2. Si ve al jugador, reproduce Charge y luego dispara BasuShot.
         │
         ├── Projectile                      Assets/Scripts/Guns/Projectile.cs
         │   │   damage, speed, range. Al chocar llama OnHit en cada IHittable del collider.
@@ -68,6 +72,8 @@ System.Object
         ├── PoolableAnimator                Assets/Scripts/Misc/PoolableAnimator.cs
         │       al activarse reinicia el Animator y apaga el objeto cuando el clip termina.
         │       No cambia sprites ni los mueve: eso vive en el clip.
+        ├── BasuShot                        Assets/Scripts/AI/BasuShot.cs
+        │       bala de Basu. Launch(dirección, velocidad) la mueve, lastima al jugador una vez y se destruye en un muro o a los 2.5 s.
         ├── DamagePopup                     Assets/Scripts/AI/DamagePopup.cs
         │       letrero rojo en píxeles. Show(posición, cantidad) arma "-N", salta y se borra. No es hijo del enemigo.
         ├── ExperienceDrop                  Assets/Scripts/AI/ExperienceDrop.cs
@@ -103,9 +109,14 @@ El murciélago lleva los tres: `BatBehaviour`, `ContactHazard` (`damageOnHit: 1`
 
 ## Hechos que evitan releer las escenas
 
-- El prefab del murciélago es `Assets/Prefabs/Enemies/Bat/Bat.prefab`. En la misma carpeta están `Idle.anim` y `BatAnimatorController.controller` (un estado, Idle).
-- El prefab de Bastl es `Assets/Prefabs/Enemies/Bastl/Bastl.prefab`, con `Walk.anim` y `BastlAnimatorController.controller`. El dibujo es `Assets/Textures/Sprites/NPC/Bastl.png` (tres cuadros, 32×16, pivote abajo). El collider sólido excluye la capa Player; un trigger del mismo tamaño sigue lastimando por `ContactHazard`. El rigidbody ignora a otros enemigos, tiene gravedad y la rotación congelada. La caminata vive en `WalkerBehaviour`; Bastl solo fija la vida.
-- El prefab de Behemoth es `Assets/Prefabs/Enemies/Behemoth/Behemoth.prefab`, con `Walk.anim`, `Angry.anim` y `BehemothAnimatorController.controller` (bool `Angry`). El dibujo es `Assets/Textures/Sprites/NPC/Behemoth.png` (seis cuadros, 32×24, pivote abajo). Los tres primeros caminan en gris. Los tres últimos (sprites 4, 5 y 6) son el enfado: el cuarto aún tiene el cuerpo gris y los ojos torcidos, y los dos últimos van en rojo. Hay una instancia en `PrimeraCueva`, en (12.5, -9.5), el mismo suelo que el critter. Misma idea de colliders y rigidbody que Bastl. Vida 6. Camina a 3 y, si `SeesPlayer` es cierto, a `angrySpeed` (6). Si el jugador se va o un muro lo tapa, vuelve al paso gris.
+- El prefab del murciélago es `Assets/Prefabs/Enemies/Bat/Bat.prefab`. En la misma carpeta están `Idle.anim` y `BatAnimatorController.controller` (un estado, Idle). El dibujo salió de `NpcCemet.png` y ahora vive en `Assets/Textures/Sprites/NPC/Bat.png` (tres cuadros, 16×16).
+- El critter usa `Assets/Textures/Sprites/NPC/Critter.png` (tres cuadros, 16×16), también sacados de `NpcCemet.png`: dos de espera y el salto.
+- El prefab de Bastl es `Assets/Prefabs/Enemies/Bastl/Bastl.prefab`, con `Walk.anim` y `BastlAnimatorController.controller`. El dibujo son seis cuadros de 32×16 en `NpcEggs1.png`, pivote abajo. El collider sólido excluye la capa Player; un trigger del mismo tamaño sigue lastimando por `ContactHazard`. El rigidbody ignora a otros enemigos, tiene gravedad y la rotación congelada. La caminata vive en `WalkerBehaviour`; Bastl solo fija la vida.
+- Beetle está en `Assets/Prefabs/Enemies/Beetle/Beetle.prefab`. `Walk.anim` son los cuadros verdes y `Alert.anim` los oscuros. El bool del Animator es `Alert`.
+- Basu está en `Assets/Prefabs/Enemies/Basu/Basu.prefab`. `Fly.anim` son las alas y `Charge.anim` la mancha verde. El bool es `Charging`. La bala es `BasuShot.prefab`, el orbe verde. No tiene gravedad.
+- EggCritter está en `Assets/Prefabs/Enemies/EggCritter/EggCritter.prefab`. Usa `EggCritterBehaviour`: la misma lógica del critter, con vida 4, vista 10 y salto 10. En el suelo parpadea; al saltar usa el cuadro de la boca abierta.
+- El prefab de Behemoth es `Assets/Prefabs/Enemies/Behemoth/Behemoth.prefab`, con `Walk.anim`, `Angry.anim` y `BehemothAnimatorController.controller` (bool `Angry`). El dibujo sale de `Assets/Textures/Sprites/NPC/NpcEggs1.png`: ocho cuadros grises de 32×24 (caminar) y cuatro rojos (enfado). Pivote abajo. Hay una instancia en `PrimeraCueva`, en (12.5, -9.5), el mismo suelo que el critter. Misma idea de colliders y rigidbody que Bastl. Vida 6. Camina a 3 y, si `SeesPlayer` es cierto, a `angrySpeed` (6). Si el jugador se va o un muro lo tapa, vuelve al paso gris.
+- De `NpcSym.png` salieron hojas propias y prefabs en `Assets/Prefabs/Objetos/`: `IconoGuardado` (el disquete), `Cofre`, `ComputadoraCorazon`, `CapsulaCorazon`, `CorazonVida`, `Corazones`, `MunicionMisil` (el rombo que gira), `BalasMisil` (las barras azules) y `Llave`. La puerta está en `Assets/Prefabs/Enemies/Puerta/Puerta.prefab`, con sus tres cuadros y sin script todavía.
 - Instancias: una en `SampleScene` (en -3, 3) y tres en `PrimeraCueva` (`Bat`, `Bat (1)`, `Bat (2)`). Cada una solo cambia la posición. El prefab trae la capa Enemies (11), SpriteRenderer, Animator, CircleCollider2D, Rigidbody2D (sin gravedad, rotación congelada), BatBehaviour (`life: 5`), ContactHazard (`damageOnHit: 1`) y Surface (`particle_blood`).
 - `Site_Bat_01`, `Site_Bat_02` y `Site_Bat_03` en `PrimeraCueva` son transforms vacíos. No tienen script.
 - `Enemy` no está colgado solo. En la escena el componente es `BatBehaviour`. En `Awake` copia su `life` a `maxHealth` y luego `Entity` llena la vida actual. Un jefe que herede de `Enemy` hace lo mismo con otro número.

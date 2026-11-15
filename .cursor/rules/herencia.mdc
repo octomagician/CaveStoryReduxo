@@ -16,7 +16,9 @@ Entity : MonoBehaviour          salud
     │   └── EggCritterBehaviour
     └── WalkerBehaviour        velocidad y vuelta al topar con un muro
         ├── BastlBehaviour
-        └── BehemothBehaviour  a 3; si ve al jugador, sprites 4-6 y más velocidad
+        ├── BehemothBehaviour  a 3; si ve al jugador, pasa a los cuadros rojos y corre más
+        ├── BeetleBehaviour    si ve al jugador, animación Alert
+        └── BasuBehaviour      vuela; si ve al jugador, carga y dispara BasuShot
 
 Projectile : MonoBehaviour
 └── Missile
