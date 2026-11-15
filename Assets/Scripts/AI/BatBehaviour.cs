@@ -3,7 +3,6 @@
 public class BatBehaviour : Enemy {
 
     SpriteRenderer spriteRenderer;
-    Player player;
     Rigidbody2D rigidBody;
 
     float topY;
@@ -22,11 +21,11 @@ public class BatBehaviour : Enemy {
         base.Awake();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
-        player = Player.instance;
 
         topY = transform.position.y + range;
         bottomY = transform.position.y - range;

@@ -3,32 +3,28 @@ using UnityEngine;
 public class CritterBehaviour : Enemy {
 
     SpriteRenderer spriteRenderer;
-    Player player;
     Rigidbody2D rigidBody;
     Animator animator;
     Collider2D bodyCollider;
 
-    private int life = 2;
-    private float sightDistance = 5f;
-    private float jumpSpeed = 7f;
-    private LayerMask obstacleMask;
+    public int life = 2;
+    public float jumpSpeed = 7f;
     public Sprite jumpSprite;
     public AudioClip jumpSound;
 
     protected override void Awake()
     {
         maxHealth = life;
-        obstacleMask = LayerMask.GetMask("Obstacles");
         base.Awake();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         bodyCollider = GetComponent<Collider2D>();
-        player = Player.instance;
     }
 
     private void Update()
@@ -62,17 +58,6 @@ public class CritterBehaviour : Enemy {
         {
             animator.enabled = true;
         }
-    }
-
-    bool SeesPlayer()
-    {
-        Vector2 toPlayer = player.transform.position - transform.position;
-        float distance = toPlayer.magnitude;
-        if (distance > sightDistance)
-            return false;
-
-        RaycastHit2D block = Physics2D.Raycast(transform.position, toPlayer.normalized, distance, obstacleMask);
-        return block.collider == null;
     }
 
     bool IsGrounded()

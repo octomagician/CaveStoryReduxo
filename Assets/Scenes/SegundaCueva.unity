@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 5663922}
   - component: {fileID: 5663921}
   - component: {fileID: 5663920}
-  - component: {fileID: 5663925}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -276,26 +275,12 @@ Transform:
   m_GameObject: {fileID: 5663919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.75, y: 0.31, z: -41.18252}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2031069681}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5663925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5663919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5fc2c0b27f1e44d8122b8cecf83327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraBehaviour
-  target: {fileID: 392694067}
-  dampingTime: 1
 --- !u!1 &330068638
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,51 +387,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.51, y: 1.01}
   m_EdgeRadius: 0
---- !u!1 &392694066
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 392694067}
-  - component: {fileID: 392694068}
-  m_Layer: 9
-  m_Name: CameraTarget
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &392694067
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392694066}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2031069681}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &392694068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392694066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064631710a5f9a34ba487e25a2a551a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 4
 --- !u!1 &492520552
 GameObject:
   m_ObjectHideFlags: 0
@@ -4776,9 +4716,42 @@ MonoBehaviour:
   - tag: projectile_polarstar_1
     prefab: {fileID: 1146267451723798, guid: aa4828a487ed7ba40bce4dca4f5c894b, type: 3}
     size: 1
+  - tag: projectile_polarstar_2
+    prefab: {fileID: 1146267451723798, guid: 123ff823ba874ee2a444b479f147543d, type: 3}
+    size: 1
+  - tag: projectile_polarstar_3
+    prefab: {fileID: 1146267451723798, guid: eeb604b9244043d7a3eb0553d53ce6f3, type: 3}
+    size: 2
   - tag: projectile_missile_1
     prefab: {fileID: 1353693793190228, guid: 57f08b63235714d4e80849681df4502e, type: 3}
-    size: 1
+    size: 2
+  - tag: projectile_missile_2
+    prefab: {fileID: 1353693793190228, guid: 61db2f32caba4b91a88a4bc58331ecdf, type: 3}
+    size: 2
+  - tag: projectile_missile_3
+    prefab: {fileID: 1353693793190228, guid: 506c3be889224bd7898fb21110b1a2b0, type: 3}
+    size: 6
+  - tag: projectile_fireball_1
+    prefab: {fileID: 1146267451723798, guid: ff684ef6d69a4a569e7e053e304e2785, type: 3}
+    size: 2
+  - tag: projectile_fireball_2
+    prefab: {fileID: 1146267451723798, guid: 340583aafb8e4a5190f0e34147d981e2, type: 3}
+    size: 3
+  - tag: projectile_fireball_3
+    prefab: {fileID: 1146267451723798, guid: 29cb1ccc93d44000be205af15afbbb1d, type: 3}
+    size: 4
+  - tag: projectile_bubble_1
+    prefab: {fileID: 1146267451723798, guid: 9ae1d69e9e63437aae5fd35b2cc53243, type: 3}
+    size: 4
+  - tag: projectile_bubble_2
+    prefab: {fileID: 1146267451723798, guid: 27e5a402c02f4c9bb05f836a818caa7a, type: 3}
+    size: 28
+  - tag: projectile_bubble_3
+    prefab: {fileID: 1146267451723798, guid: d7af1b6ec44045eeb633de0283a72ab2, type: 3}
+    size: 45
+  - tag: particle_bubblepop
+    prefab: {fileID: 1146267451723798, guid: adb6d5e451d844cc8332411482ca902d, type: 3}
+    size: 8
 --- !u!4 &508056434
 Transform:
   m_ObjectHideFlags: 0
@@ -9866,6 +9839,8 @@ MonoBehaviour:
   gunsOwned:
   - {fileID: 11400000, guid: 8cf921cdbafd2ca40892488e893ebb8c, type: 2}
   - {fileID: 11400000, guid: 5c1147d7cb5389c4caf68684397903c5, type: 2}
+  - {fileID: 11400000, guid: b58413a6e179462b8d3b9666c8489174, type: 2}
+  - {fileID: 11400000, guid: 3bdf596d081e4a499790fcb94224cb61, type: 2}
 --- !u!1001 &2031069680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9939,7 +9914,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4313043022130892, guid: aa158a16c80a990459ced86395423056, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 392694067}
+      addedObject: {fileID: 5663924}
     - targetCorrespondingSourceObject: {fileID: 4313043022130892, guid: aa158a16c80a990459ced86395423056, type: 3}
       insertIndex: -1
       addedObject: {fileID: 330068639}
@@ -10002,11 +9977,24 @@ Transform:
   - {fileID: 600783229}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1000000777
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 5663924}
+  - {fileID: 1000000777}
   - {fileID: 1198065712}
   - {fileID: 2031069680}
   - {fileID: 508056434}

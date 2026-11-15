@@ -12,8 +12,35 @@ MonoBehaviour:
   m_Name: Bubbler
   m_EditorClassIdentifier: 
   name: Bubbler
-  description: DESCRIPTION
-  sprite: {fileID: 21300004, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
-  handleOffsetX: -13
-  handleOffsetY: -3
-  shootablePrefab: {fileID: 0}
+  description: Shoots floating bubbles.
+  spriteLeft: {fileID: 21300004, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  spriteRight: {fileID: 21300016, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  spriteUpLeft: {fileID: 21300028, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  spriteUpRight: {fileID: 21300040, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  spriteDownLeft: {fileID: 21300052, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  spriteDownRight: {fileID: 21300062, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  sprite: {fileID: 21300016, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  usesAmmo: 1
+  baseMaxAmmo: 100
+  ammoRechargeSeconds: 3
+  rechargeBlockedFromLevel: 2
+  inventoryIcon: {fileID: 21300014, guid: 7c68bfc65e9af4a4e8862ce7ad617f5b, type: 3}
+  handleOffsetX: -11
+  handleOffsetY: -1
+  shootablePrefabTag: projectile_bubble_1
+  levelProjectileTags:
+  - projectile_bubble_2
+  - projectile_bubble_3
+  fireIntervalPerLevel:
+  - 0
+  - 0.12
+  - 0
+  spreadAnglePerLevel:
+  - 0
+  - 15
+  - 0
+  swarmFromLevel: 3
+  swarmMaxBubbles: 15
+  swarmSpawnInterval: 0.12
+  swarmOverflowInterval: 0.16
+  shootSound: {fileID: 8300000, guid: 8c93ea28b57d449b6856002f10519ba3, type: 3}
