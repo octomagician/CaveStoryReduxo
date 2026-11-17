@@ -7,7 +7,7 @@ alwaysApply: true
 
 Los efectos pasan por `Sound` (`Assets/Scripts/Misc/Sound.cs`). No crees otro reproductor, ni una lista de clips con índices, ni un `AudioSource` por sonido.
 
-`Sound` cuelga directo de `MonoBehaviour` y no tiene hijos. Vive en el objeto `Audio` de la escena, junto a un `AudioSource` sin loop y sin clip. `Awake` guarda `instance` y toma esa fuente. Hoy ese objeto está solo en `PrimeraCueva`. La escena que se juega tiene que llevarlo; si `instance` es null, la llamada lanza `NullReferenceException` y el método que la hizo se corta ahí.
+`Sound` cuelga directo de `MonoBehaviour` y no tiene hijos. Vive en el objeto `Audio` de la escena, junto a un `AudioSource` sin loop y sin clip. `Awake` guarda `instance` y toma esa fuente, la primera del objeto. La escena que se juega tiene que llevarlo; si `instance` es null, la llamada lanza `NullReferenceException` y el método que la hizo se corta ahí. El segundo `AudioSource` del mismo objeto es la música: loop, play on awake y el clip de esa cueva.
 
 El clip es un campo `AudioClip` del componente que provoca el ruido. Se arrastra en el Inspector del prefab o del asset. El código no escribe el nombre del archivo. `Assets/Sounds/` se organiza como se quiera.
 
