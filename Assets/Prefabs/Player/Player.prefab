@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114012368067618836}
   - component: {fileID: 114642062420911252}
   - component: {fileID: 95201756853618548}
+  - component: {fileID: 114900111222333001}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -119,6 +120,17 @@ MonoBehaviour:
   timeToJumpApex: 0.4
   accelerationTimeGrounded: 0.1
   accelerationTimeAirborneMultiplier: 2
+--- !u!114 &114900111222333001
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160826541180156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b2d6f4a1c8e4d0b7a5c3e9f6d1b8a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212630084877707562
 SpriteRenderer:
   m_ObjectHideFlags: 1
