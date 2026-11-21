@@ -80,6 +80,12 @@ System.Object
         │       triángulo naranja que suelta un enemigo. Al aparecer sale empujado, una animación gira su sprite, cae y rebota en el suelo. Guarda value. No lo recoge nadie todavía.
         ├── Sound                           Assets/Scripts/Misc/Sound.cs
         │       reproductor único. Play(AudioClip) hace PlayOneShot en el AudioSource del mismo objeto. El clip no vive aquí.
+        ├── Door                            Assets/Scripts/World/Door.cs
+        │       al tocar al jugador carga sceneName y recuerda spawnName. Cada instancia de la escena trae sus dos textos.
+        ├── PlayerArrival                   Assets/Scripts/World/PlayerArrival.cs
+        │       en el prefab del jugador. Si hay un spawn pendiente, mueve a Quote a ese objeto vacío.
+        ├── MapBackground                   Assets/Scripts/World/MapBackground.cs
+        │       repite la imagen de fondo de la cueva y la mueve a la mitad de la velocidad de la cámara.
         └── WeaponInventoryUI               Assets/Scripts/UI/WeaponInventoryUI.cs
                 fila de iconos de las armas (Gun.inventoryIcon) arriba a la izquierda. Vive en el prefab WeaponInventoryCanvas y se actualiza con GunController.OnGunChanged.
 ```
@@ -118,7 +124,7 @@ El murciélago lleva los tres: `BatBehaviour`, `ContactHazard` (`damageOnHit: 1`
 - Basu está en `Assets/Prefabs/Enemies/Basu/Basu.prefab`. `Fly.anim` son las alas y `Charge.anim` la mancha verde. El bool es `Charging`. La bala es `BasuShot.prefab`, el orbe verde. No tiene gravedad.
 - EggCritter está en `Assets/Prefabs/Enemies/EggCritter/EggCritter.prefab`. Usa `EggCritterBehaviour`: la misma lógica del critter, con vida 4, vista 10 y salto 10. En el suelo parpadea; al saltar usa el cuadro de la boca abierta.
 - El prefab de Behemoth es `Assets/Prefabs/Enemies/Behemoth/Behemoth.prefab`, con `Walk.anim`, `Angry.anim` y `BehemothAnimatorController.controller` (bool `Angry`). El dibujo sale de `Assets/Textures/Sprites/NPC/NpcEggs1.png`: ocho cuadros grises de 32×24 (caminar) y cuatro rojos (enfado). Pivote abajo. Hay una instancia en `PrimeraCueva`, en (12.5, -9.5), el mismo suelo que el critter. Misma idea de colliders y rigidbody que Bastl. Vida 6. Camina a 3 y, si `SeesPlayer` es cierto, a `angrySpeed` (6). Si el jugador se va o un muro lo tapa, vuelve al paso gris.
-- De `NpcSym.png` salieron hojas propias y prefabs en `Assets/Prefabs/Objetos/`: `IconoGuardado` (el disquete), `Cofre`, `ComputadoraCorazon`, `CapsulaCorazon`, `CorazonVida`, `Corazones`, `MunicionMisil` (el rombo que gira), `BalasMisil` (las barras azules) y `Llave`. La puerta está en `Assets/Prefabs/Enemies/Puerta/Puerta.prefab`, con sus tres cuadros y sin script todavía.
+- De `NpcSym.png` salieron hojas propias y prefabs en `Assets/Prefabs/Objetos/`: `IconoGuardado` (el disquete), `Cofre`, `ComputadoraCorazon`, `CapsulaCorazon`, `CorazonVida`, `Corazones`, `MunicionMisil` (el rombo que gira), `BalasMisil` (las barras azules) y `Llave`. La puerta está en `Assets/Prefabs/Enemies/Puerta/Puerta.prefab`, con sus tres cuadros. El viaje no va en el prefab: en la escena se le agrega `Door` (`sceneName`, `spawnName`) y el `BoxCollider2D` queda en trigger. `PlayerArrival` va en el prefab del jugador.
 - Instancias: una en `SampleScene` (en -3, 3) y tres en `PrimeraCueva` (`Bat`, `Bat (1)`, `Bat (2)`). Cada una solo cambia la posición. El prefab trae la capa Enemies (11), SpriteRenderer, Animator, CircleCollider2D, Rigidbody2D (sin gravedad, rotación congelada), BatBehaviour (`life: 5`), ContactHazard (`damageOnHit: 1`) y Surface (`particle_blood`).
 - `Site_Bat_01`, `Site_Bat_02` y `Site_Bat_03` en `PrimeraCueva` son transforms vacíos. No tienen script.
 - `Enemy` no está colgado solo. En la escena el componente es `BatBehaviour`. En `Awake` copia su `life` a `maxHealth` y luego `Entity` llena la vida actual. Un jefe que herede de `Enemy` hace lo mismo con otro número.
