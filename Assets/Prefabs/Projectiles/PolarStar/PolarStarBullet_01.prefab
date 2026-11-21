@@ -54,7 +54,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: 30
-  range: 3
+  range: 4
+  hitSound: {fileID: 8300000, guid: 76bdd4b3f2ff341b0a17d8e8e18e71f7, type: 3}
+  hitVolume: 0.08
+  hitRadius: 0
   hittableMask:
     serializedVersion: 2
     m_Bits: 3072

@@ -4602,9 +4602,42 @@ MonoBehaviour:
   - tag: projectile_polarstar_1
     prefab: {fileID: 1146267451723798, guid: aa4828a487ed7ba40bce4dca4f5c894b, type: 3}
     size: 1
+  - tag: projectile_polarstar_2
+    prefab: {fileID: 1146267451723798, guid: 123ff823ba874ee2a444b479f147543d, type: 3}
+    size: 1
+  - tag: projectile_polarstar_3
+    prefab: {fileID: 1146267451723798, guid: eeb604b9244043d7a3eb0553d53ce6f3, type: 3}
+    size: 2
   - tag: projectile_missile_1
     prefab: {fileID: 1353693793190228, guid: 57f08b63235714d4e80849681df4502e, type: 3}
-    size: 1
+    size: 2
+  - tag: projectile_missile_2
+    prefab: {fileID: 1353693793190228, guid: 61db2f32caba4b91a88a4bc58331ecdf, type: 3}
+    size: 2
+  - tag: projectile_missile_3
+    prefab: {fileID: 1353693793190228, guid: 506c3be889224bd7898fb21110b1a2b0, type: 3}
+    size: 6
+  - tag: projectile_fireball_1
+    prefab: {fileID: 1146267451723798, guid: ff684ef6d69a4a569e7e053e304e2785, type: 3}
+    size: 2
+  - tag: projectile_fireball_2
+    prefab: {fileID: 1146267451723798, guid: 340583aafb8e4a5190f0e34147d981e2, type: 3}
+    size: 3
+  - tag: projectile_fireball_3
+    prefab: {fileID: 1146267451723798, guid: 29cb1ccc93d44000be205af15afbbb1d, type: 3}
+    size: 4
+  - tag: projectile_bubble_1
+    prefab: {fileID: 1146267451723798, guid: 9ae1d69e9e63437aae5fd35b2cc53243, type: 3}
+    size: 4
+  - tag: projectile_bubble_2
+    prefab: {fileID: 1146267451723798, guid: 27e5a402c02f4c9bb05f836a818caa7a, type: 3}
+    size: 28
+  - tag: projectile_bubble_3
+    prefab: {fileID: 1146267451723798, guid: d7af1b6ec44045eeb633de0283a72ab2, type: 3}
+    size: 45
+  - tag: particle_bubblepop
+    prefab: {fileID: 1146267451723798, guid: adb6d5e451d844cc8332411482ca902d, type: 3}
+    size: 8
 --- !u!4 &508056434
 Transform:
   m_ObjectHideFlags: 0
@@ -10521,12 +10554,26 @@ MonoBehaviour:
   background: {fileID: 21300000, guid: 4b0eaea6390327d4d9590f83c2d0d8fc, type: 3}
   parallax: 0.5
 
+--- !u!1001 &1000000777
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 810000002}
   - {fileID: 1818100002}
+  - {fileID: 1000000777}
   - {fileID: 1198065712}
   - {fileID: 508056434}
   - {fileID: 2095828259}

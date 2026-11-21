@@ -54,9 +54,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacd16b931f23794390b2cfd7adcbe26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 6
+  damage: 10
   speed: 5
   range: 10
+  hitSound: {fileID: 8300000, guid: 81dd58d678f39496a9b63810ed4345f9, type: 3}
+  hitVolume: 1
   hittableMask:
     serializedVersion: 2
     m_Bits: 3072

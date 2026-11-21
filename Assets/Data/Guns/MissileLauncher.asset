@@ -14,6 +14,18 @@ MonoBehaviour:
   name: Missile Launcher
   description: Launches missiles.
   sprite: {fileID: 21300002, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  usesAmmo: 1
+  baseMaxAmmo: 10
+  ammoPerCapsule: 5
+  inventoryIcon: {fileID: 21300010, guid: 7c68bfc65e9af4a4e8862ce7ad617f5b, type: 3}
   handleOffsetX: -11
   handleOffsetY: -1
   shootablePrefabTag: projectile_missile_1
+  levelProjectileTags:
+  - projectile_missile_2
+  - projectile_missile_3
+  projectilesPerLevel:
+  - 1
+  - 1
+  - 3
+  shootSound: {fileID: 8300000, guid: 7cc74754dbac24fc69a97ad2806022cd, type: 3}

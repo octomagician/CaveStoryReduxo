@@ -14,6 +14,12 @@ MonoBehaviour:
   name: Polar Star
   description: Pea shooter gun.
   sprite: {fileID: 21300070, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  unlimitedAmmo: 1
+  inventoryIcon: {fileID: 21300004, guid: 7c68bfc65e9af4a4e8862ce7ad617f5b, type: 3}
   handleOffsetX: -11
   handleOffsetY: -4
   shootablePrefabTag: projectile_polarstar_1
+  levelProjectileTags:
+  - projectile_polarstar_2
+  - projectile_polarstar_3
+  shootSound: {fileID: 8300000, guid: 7cc74754dbac24fc69a97ad2806022cd, type: 3}

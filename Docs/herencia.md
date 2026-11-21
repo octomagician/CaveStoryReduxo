@@ -84,8 +84,10 @@ System.Object
         │       al tocar al jugador carga sceneName y recuerda spawnName. Cada instancia de la escena trae sus dos textos.
         ├── PlayerArrival                   Assets/Scripts/World/PlayerArrival.cs
         │       en el prefab del jugador. Si hay un spawn pendiente, mueve a Quote a ese objeto vacío.
-        └── MapBackground                   Assets/Scripts/World/MapBackground.cs
-                repite la imagen de fondo de la cueva y la mueve a la mitad de la velocidad de la cámara.
+        ├── MapBackground                   Assets/Scripts/World/MapBackground.cs
+        │       repite la imagen de fondo de la cueva y la mueve a la mitad de la velocidad de la cámara.
+        └── WeaponInventoryUI               Assets/Scripts/UI/WeaponInventoryUI.cs
+                fila de iconos de las armas (Gun.inventoryIcon) arriba a la izquierda. Vive en el prefab WeaponInventoryCanvas y se actualiza con GunController.OnGunChanged.
 ```
 
 `General` y `Direction` no declaran padre: en C# quedan bajo `System.Object`. `IHittable` no hereda de nada.
