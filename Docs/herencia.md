@@ -82,8 +82,10 @@ System.Object
         │       reproductor único. Play(AudioClip) hace PlayOneShot en el AudioSource del mismo objeto. El clip no vive aquí.
         ├── Door                            Assets/Scripts/World/Door.cs
         │       al tocar al jugador carga sceneName y recuerda spawnName. Cada instancia de la escena trae sus dos textos.
-        └── PlayerArrival                   Assets/Scripts/World/PlayerArrival.cs
-                en el prefab del jugador. Si hay un spawn pendiente, mueve a Quote a ese objeto vacío.
+        ├── PlayerArrival                   Assets/Scripts/World/PlayerArrival.cs
+        │       en el prefab del jugador. Si hay un spawn pendiente, mueve a Quote a ese objeto vacío.
+        └── MapBackground                   Assets/Scripts/World/MapBackground.cs
+                repite la imagen de fondo de la cueva y la mueve a la mitad de la velocidad de la cámara.
 ```
 
 `General` y `Direction` no declaran padre: en C# quedan bajo `System.Object`. `IHittable` no hereda de nada.

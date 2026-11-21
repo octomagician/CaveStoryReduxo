@@ -20,4 +20,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TerceraCueva.unity
     guid: 28e7ef455bc767148ab3841d8f286aa5
+  - enabled: 1
+    path: Assets/Scenes/SecuestroToroko.unity
+    guid: e1a2b3c4d5e64789a0b1c2d3e4f50617
+  - enabled: 1
+    path: Assets/Scenes/CuevaBalrog1.unity
+    guid: e2a2b3c4d5e64789a0b1c2d3e4f50618
+  - enabled: 1
+    path: Assets/Scenes/CuartaCueva.unity
+    guid: e3a2b3c4d5e64789a0b1c2d3e4f50619
+  - enabled: 1
+    path: Assets/Scenes/QuintaCueva.unity
+    guid: e4a2b3c4d5e64789a0b1c2d3e4f50620
+  - enabled: 1
+    path: Assets/Scenes/CuevaBalrogFinal.unity
+    guid: e5a2b3c4d5e64789a0b1c2d3e4f50621
   m_configObjects: {}
