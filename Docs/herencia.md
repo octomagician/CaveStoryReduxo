@@ -78,8 +78,10 @@ System.Object
         │       letrero rojo en píxeles. Show(posición, cantidad) arma "-N", salta y se borra. No es hijo del enemigo.
         ├── ExperienceDrop                  Assets/Scripts/AI/ExperienceDrop.cs
         │       triángulo naranja que suelta un enemigo. Al aparecer sale empujado, una animación gira su sprite, cae y rebota en el suelo. Guarda value. No lo recoge nadie todavía.
-        └── Sound                           Assets/Scripts/Misc/Sound.cs
-                reproductor único. Play(AudioClip) hace PlayOneShot en el AudioSource del mismo objeto. El clip no vive aquí.
+        ├── Sound                           Assets/Scripts/Misc/Sound.cs
+        │       reproductor único. Play(AudioClip) hace PlayOneShot en el AudioSource del mismo objeto. El clip no vive aquí.
+        └── WeaponInventoryUI               Assets/Scripts/UI/WeaponInventoryUI.cs
+                fila de iconos de las armas (Gun.inventoryIcon) arriba a la izquierda. Vive en el prefab WeaponInventoryCanvas y se actualiza con GunController.OnGunChanged.
 ```
 
 `General` y `Direction` no declaran padre: en C# quedan bajo `System.Object`. `IHittable` no hereda de nada.

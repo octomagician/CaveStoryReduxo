@@ -242,10 +242,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: -0.025862068
-    y: 0.5686275
-    width: 0.3065134
-    height: 0.36199096
+    x: 0.05395463
+    y: 1.5408163
+    width: 0.7847946
+    height: 1.2244898
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -329,9 +329,42 @@ MonoBehaviour:
   - tag: projectile_polarstar_1
     prefab: {fileID: 1146267451723798, guid: aa4828a487ed7ba40bce4dca4f5c894b, type: 3}
     size: 1
+  - tag: projectile_polarstar_2
+    prefab: {fileID: 1146267451723798, guid: 123ff823ba874ee2a444b479f147543d, type: 3}
+    size: 1
+  - tag: projectile_polarstar_3
+    prefab: {fileID: 1146267451723798, guid: eeb604b9244043d7a3eb0553d53ce6f3, type: 3}
+    size: 2
   - tag: projectile_missile_1
     prefab: {fileID: 1353693793190228, guid: 57f08b63235714d4e80849681df4502e, type: 3}
-    size: 1
+    size: 2
+  - tag: projectile_missile_2
+    prefab: {fileID: 1353693793190228, guid: 61db2f32caba4b91a88a4bc58331ecdf, type: 3}
+    size: 2
+  - tag: projectile_missile_3
+    prefab: {fileID: 1353693793190228, guid: 506c3be889224bd7898fb21110b1a2b0, type: 3}
+    size: 6
+  - tag: projectile_fireball_1
+    prefab: {fileID: 1146267451723798, guid: ff684ef6d69a4a569e7e053e304e2785, type: 3}
+    size: 2
+  - tag: projectile_fireball_2
+    prefab: {fileID: 1146267451723798, guid: 340583aafb8e4a5190f0e34147d981e2, type: 3}
+    size: 3
+  - tag: projectile_fireball_3
+    prefab: {fileID: 1146267451723798, guid: 29cb1ccc93d44000be205af15afbbb1d, type: 3}
+    size: 4
+  - tag: projectile_bubble_1
+    prefab: {fileID: 1146267451723798, guid: 9ae1d69e9e63437aae5fd35b2cc53243, type: 3}
+    size: 4
+  - tag: projectile_bubble_2
+    prefab: {fileID: 1146267451723798, guid: 27e5a402c02f4c9bb05f836a818caa7a, type: 3}
+    size: 28
+  - tag: projectile_bubble_3
+    prefab: {fileID: 1146267451723798, guid: d7af1b6ec44045eeb633de0283a72ab2, type: 3}
+    size: 45
+  - tag: particle_bubblepop
+    prefab: {fileID: 1146267451723798, guid: adb6d5e451d844cc8332411482ca902d, type: 3}
+    size: 8
 --- !u!4 &113949773
 Transform:
   m_ObjectHideFlags: 0
@@ -395,6 +428,8 @@ MonoBehaviour:
   gunsOwned:
   - {fileID: 11400000, guid: 8cf921cdbafd2ca40892488e893ebb8c, type: 2}
   - {fileID: 11400000, guid: 5c1147d7cb5389c4caf68684397903c5, type: 2}
+  - {fileID: 11400000, guid: b58413a6e179462b8d3b9666c8489174, type: 2}
+  - {fileID: 11400000, guid: 3bdf596d081e4a499790fcb94224cb61, type: 2}
 --- !u!1 &492520552
 GameObject:
   m_ObjectHideFlags: 0
@@ -30484,6 +30519,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4e8b1a07f3d4e2a9b6c5d8e1f0a2b3c, type: 3}
+--- !u!1001 &1000000777
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
 --- !u!1001 &1032679399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31662,6 +31722,123 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1369373078
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1000100, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_Name
+      value: WeaponInventoryCanvas (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000101, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000201, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000201, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f6c0b84a1e94d73b9a5c3e8d7106fa4, type: 3}
 --- !u!1 &1428102796
 GameObject:
   m_ObjectHideFlags: 0
@@ -32379,6 +32556,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1000000777}
   - {fileID: 1198065712}
   - {fileID: 2095828259}
   - {fileID: 810000002}
@@ -32394,3 +32572,1704 @@ SceneRoots:
   - {fileID: 1032679399}
   - {fileID: 1428102798}
   - {fileID: 1917715689}
+  - {fileID: 1369373078}
+  - {fileID: 1100000001}
+  - {fileID: 1100000011}
+  - {fileID: 1100000021}
+  - {fileID: 1100000031}
+  - {fileID: 1100000041}
+  - {fileID: 1100000051}
+  - {fileID: 1100000061}
+  - {fileID: 1100000071}
+  - {fileID: 1100000081}
+  - {fileID: 1100000091}
+  - {fileID: 1100000101}
+  - {fileID: 1100000111}
+  - {fileID: 1100000121}
+  - {fileID: 1100000131}
+  - {fileID: 1100000141}
+  - {fileID: 1100000151}
+  - {fileID: 1100000161}
+  - {fileID: 1100000171}
+  - {fileID: 1100000181}
+  - {fileID: 1100000191}
+  - {fileID: 1100000201}
+  - {fileID: 1100000211}
+  - {fileID: 1100000221}
+  - {fileID: 1100000231}
+  - {fileID: 1100000241}
+  - {fileID: 1100000251}
+  - {fileID: 1100000261}
+  - {fileID: 1100000271}
+  - {fileID: 1100000281}
+  - {fileID: 1100000291}
+  - {fileID: 1100000301}
+  - {fileID: 1100000311}
+  - {fileID: 1100000321}
+  - {fileID: 1100000331}
+  - {fileID: 1100000341}
+  - {fileID: 1100000351}
+  - {fileID: 1100000361}
+  - {fileID: 1100000371}
+  - {fileID: 1100000381}
+  - {fileID: 1100000391}
+  - {fileID: 1100000401}
+  - {fileID: 1100000411}
+  - {fileID: 1100000421}
+  - {fileID: 1100000431}
+  - {fileID: 1100000441}
+  - {fileID: 1100000451}
+  - {fileID: 1100000461}
+  - {fileID: 1100000471}
+  - {fileID: 1100000481}
+  - {fileID: 1100000491}
+--- !u!1001 &1100000001
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.302
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000011
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.847
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.145
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000021
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.748
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.731
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000031
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.721
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000041
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.603
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.867
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.474
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.181
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000061
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.654
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000071
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.218
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.446
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000081
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.995
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.895
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000091
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.883
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.793
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000101
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.093
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000111
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.581
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.579
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.602
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.236
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000131
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.446
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.632
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.163
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_16
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.135
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.745
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000161
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.031
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.126
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000171
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.412
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000181
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.855
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000191
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_20
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.711
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.171
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000201
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_21
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000211
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_22
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.398
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000221
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_23
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.357
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.149
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000231
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_24
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.179
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000241
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_25
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.576
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000251
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_26
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.157
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.236
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000261
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_27
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.167
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.514
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000271
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_28
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.237
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.978
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000281
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_29
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.336
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.336
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000291
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_30
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.604
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.146
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000301
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_31
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.749
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.627
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000311
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_32
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.189
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000321
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_33
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.934
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.912
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_34
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.109
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.889
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000341
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_35
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.158
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.328
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000351
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_36
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.198
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.403
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000361
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_37
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.438
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.986
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_38
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.595
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.569
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000381
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_39
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.337
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000391
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_40
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.923
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000401
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_41
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.832
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.234
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000411
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_42
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.932
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.536
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000421
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_43
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.069
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.495
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000431
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_44
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.243
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.743
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000441
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_45
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.304
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.898
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000451
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_46
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.767
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000461
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_47
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.697
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.728
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000471
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_48
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.711
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.831
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000481
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_49
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.849
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.768
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+--- !u!1001 &1100000491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510001, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_Name
+      value: ExperienceDropTest_50
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.092
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.302
+      objectReference: {fileID: 0}
+    - target: {fileID: 510002, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 510005, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}
+      propertyPath: neverExpires
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1d9c2a8b4e4d7c9a0e5b3f71c8d264, type: 3}

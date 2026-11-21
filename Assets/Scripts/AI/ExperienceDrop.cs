@@ -12,7 +12,9 @@ public class ExperienceDrop : MonoBehaviour {
     const float MinPushY = 5f; // empujón hacia arriba
     const float MaxPushY = 8f;
 
-    private int value; // cuánta experiencia trae
+    [SerializeField] private int value = 1; // cuánta experiencia trae (el enemigo lo cambia con SetValue)
+    [SerializeField] private bool neverExpires; // para los de prueba puestos en la escena
+    private bool collected;
     private Rigidbody2D body;
     private static PhysicsMaterial2D bounceMaterial; // uno solo, lo comparten todos
 
@@ -35,7 +37,8 @@ public class ExperienceDrop : MonoBehaviour {
     void OnEnable()
     {
         CancelInvoke(nameof(Expire));
-        Invoke(nameof(Expire), Lifetime); // cuenta atrás para borrarlo
+        if (!neverExpires)
+            Invoke(nameof(Expire), Lifetime); // cuenta atrás para borrarlo
         Launch(); // apenas aparece, sale empujado
     }
 
@@ -75,6 +78,21 @@ public class ExperienceDrop : MonoBehaviour {
             colliders[i].sharedMaterial = bounceMaterial;
             colliders[i].excludeLayers = ignore; // no empuja al jugador ni a los enemigos
         }
+    }
+
+    // el jugador lo toca: la xp va al arma equipada
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (collected || !other.CompareTag("Player"))
+            return;
+
+        GunController guns = FindFirstObjectByType<GunController>(); // no depende de dónde esté en la jerarquía
+        if (guns == null)
+            return;
+
+        collected = true; // evita que cuente dos veces
+        guns.AddExperience(value);
+        Destroy(gameObject);
     }
 
     // cuando se cumple el tiempo, se borra

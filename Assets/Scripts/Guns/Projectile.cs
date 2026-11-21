@@ -8,6 +8,9 @@ public class Projectile : MonoBehaviour
     public int damage;
     public float speed;
     public float range;
+    public AudioClip hitSound; // suena al pegar en un enemigo o una pared
+    [Range(0f, 1f)] public float hitVolume = 1f; // volumen del sonido de golpe
+    public float hitRadius; // 0 = rayo fino; mayor que 0 = la bala tiene grosor (nivel 2 y 3)
 
     protected Player player;
     protected Vector3 direction;
@@ -28,6 +31,12 @@ public class Projectile : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = Player.instance;
         maxTime = range / speed;
+    }
+
+    // gira la dirección de vuelo unos grados (el arma lo usa para dispersar los disparos)
+    public virtual void RotateAim(float degrees)
+    {
+        direction = Quaternion.Euler(0f, 0f, degrees) * direction;
     }
 
     protected virtual void OnEnable()
@@ -68,7 +77,10 @@ public class Projectile : MonoBehaviour
     protected virtual void CheckForCollisions2D()
     {
         // Rayo corto en la dirección del disparo, solo en las capas de hittableMask
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, speed * Time.deltaTime, hittableMask.value);
+        float distance = speed * Time.deltaTime;
+        RaycastHit2D hit = hitRadius > 0f
+            ? Physics2D.CircleCast(transform.position, hitRadius, direction, distance, hittableMask.value)
+            : Physics2D.Raycast(transform.position, direction, distance, hittableMask.value);
 
         if(hit.collider != null)
         {
@@ -78,6 +90,9 @@ public class Projectile : MonoBehaviour
             {
                 hittable.OnHit(hit.point, this); // Avisa a Enemy y también a Surface
             }
+
+            if (Sound.instance != null)
+                Sound.instance.Play(hitSound, hitVolume);
 
             Die(true); // La bala se apaga al pegar
         }

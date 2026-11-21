@@ -12,8 +12,20 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   name: Fireball
-  description: DESCRIPTION
-  sprite: {fileID: 21300068, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  description: Shoots bouncing fireballs.
+  spriteLeft: {fileID: 21300000, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  spriteRight: {fileID: 21300012, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  spriteUpLeft: {fileID: 21300024, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  spriteUpRight: {fileID: 21300036, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  spriteDownLeft: {fileID: 21300048, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  spriteDownRight: {fileID: 21300058, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  sprite: {fileID: 21300012, guid: a6991b2b21d6ac04dbc1505544397545, type: 3}
+  unlimitedAmmo: 1
+  inventoryIcon: {fileID: 21300006, guid: 7c68bfc65e9af4a4e8862ce7ad617f5b, type: 3}
   handleOffsetX: -11
-  handleOffsetY: -3
-  shootablePrefab: {fileID: 0}
+  handleOffsetY: -1
+  shootablePrefabTag: projectile_fireball_1
+  levelProjectileTags:
+  - projectile_fireball_2
+  - projectile_fireball_3
+  shootSound: {fileID: 8300000, guid: f0bf0e11324c74efca35e27c0e46de20, type: 3}
